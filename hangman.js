@@ -1,4 +1,4 @@
-//'use strict'
+"use strict";
 window.onload = function () {
 
   var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
@@ -14,6 +14,11 @@ window.onload = function () {
   var lives;// Lives
   var counter;// Count correct geusses
   var space;// Number of spaces in word '-'
+  var myButtons;
+  var letters;
+  var list;
+  var wordHolder;
+  var correct;
 
   // Get elements shown on website
   var showLives = document.getElementById('mylives');
@@ -23,8 +28,8 @@ window.onload = function () {
 
   // create alphabet list 
   var buttons = function () {
-    myButtons = document.getElementById('buttons');
-    letters = document.createElement('ul');
+      myButtons = document.getElementById('buttons');
+      letters = document.createElement('ul');
 
     for (var i = 0; i < alphabet.length; i++) {
       letters.id = 'alphabet';
@@ -49,7 +54,7 @@ window.onload = function () {
   }
 
   // Create words
-   result = function () {
+  var result = function () {
     wordHolder = document.getElementById('hold');
     correct = document.createElement('ul');
 
@@ -71,7 +76,7 @@ window.onload = function () {
   }
   
   // Show lives left
-   comments = function () {
+  var comments = function () {
     showLives.innerHTML = 'You have ' + lives + ' lives left';
     if (lives < 1) {
       showLives.innerHTML = 'Game Over';
@@ -88,7 +93,7 @@ window.onload = function () {
 
 
   // OnClick Function
-  check = function () {
+  var check = function () {
     
     list.onclick = function () {
       var geuss = this.innerHTML;
@@ -110,7 +115,7 @@ window.onload = function () {
     }
   }
   // OnClick Function
-   checkkey = function (e) {
+  var checkkey = function (e) {
       document.getElementById(e.key).setAttribute('class', 'active');
       for (var i = 0; i < word.length; i++) {
         if (word[i] === e.key) {
@@ -131,7 +136,7 @@ window.onload = function () {
     document.addEventListener("keydown", checkkey);
 
   // Play the Game, chooses a random word in a random Category
-  play = function () {
+  var play = function () {
     categories = [
         ['monkey', 'elephant', 'sloth', 'zebra', 'donkey', 'axolotl', 'tyranosaurus'], //Category 1
         ['aliens', 'jurassic-park', 'harry-potter', 'back-to-the-future', 'turtles'], //Category 2
