@@ -14,11 +14,11 @@ window.onload = function () {
   var lives;// Lives
   var counter;// Count correct geusses
   var space;// Number of spaces in word '-'
-  var myButtons;
-  var letters;
-  var list;
-  var wordHolder;
-  var correct;
+  var myButtons;//
+  var letters;//
+  var list;//
+  var wordHolder;//
+  var correct;//
 
   // Get elements shown on website
   var showLives = document.getElementById('mylives');
@@ -90,8 +90,6 @@ window.onload = function () {
     }
   }
 
-
-
   // OnClick Function
   var check = function () {
     
@@ -114,7 +112,8 @@ window.onload = function () {
       }
     }
   }
-  // OnClick Function
+
+  // keypress Function
   var checkkey = function (e) {
       document.getElementById(e.key).setAttribute('class', 'active');
       for (var i = 0; i < word.length; i++) {
@@ -137,7 +136,7 @@ window.onload = function () {
 
   // Play the Game, chooses a random word in a random Category
   var play = function () {
-    categories = [
+      categories = [
         ['monkey', 'elephant', 'sloth', 'zebra', 'donkey', 'axolotl', 'tyranosaurus'], //Category 1
         ['aliens', 'jurassic-park', 'harry-potter', 'back-to-the-future', 'turtles'], //Category 2
         ['sushi', 'pizza', 'lasagna', 'sandwich', 'burger'] //Category 3
@@ -163,7 +162,7 @@ window.onload = function () {
   //Get a hint for the word, from the chosen Category
   hint.onclick = function() {
 
-      hints = [
+     var hints = [
         ['likes bananas', 'trunk', 'cute and lazy', 'black with white stripes, or white with black stripes?', 'jackass', 'aquatic salamander', 'jurassic park'],
         ['predator', 'clever girl', 'wizards', "88 miles pr. hour", 'cowabunga!'],
         ['wrapped in seaweed', 'tomato sauce and cheese', 'garfield', 'get back in the kitchen and make me a..', '.. and fries']
