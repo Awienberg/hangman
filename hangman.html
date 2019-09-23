@@ -5,15 +5,18 @@
     <meta charset='utf-8'/>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src='hangman.js'></script>
+    <script type="cookies.js"></script>
 </head>
     
 <body>
 
-  <div class="sticky" id="header">
+  <div class="header">
         <h1>Alpha Hangman Game</h1>
   </div>
   <div class="wrapper">
-    <h2>Use the alphabet below to guess the word, or click hint to get a clue. </h2>
+    <h2>Use the alphabet below, or start typing to guess the word.
+      <br>
+      Click hint to get a clue. </h2>
   </div>
 
   <div class="wrapper">
@@ -34,29 +37,22 @@
   </div>
 </div>
 
-<div class="scoreStyle">
-        <p id="scoreBoard"></p>
-            <h2>Score board</h2>
-            <table style="width:100%">
-                <tr>
-                  <th>Name</th>
-                  <th>Score</th> 
-                </tr>
-                <tr>
-                  <td>Name</td>
-                  <td>500</td> 
-                </tr>
-                <tr>
-                  <td>Name</td>
-                  <td>500</td> 
+<div class="scoreBoard">
+  <h2>Score Board</h2>
+    <table>
+      <tr>
+        <th id="p1">Name</th>
+        <th>Score</th> 
+      </tr>
+      <tr>
+        <td>Player 1</td>
+        <td id="score">500</td> 
+      </tr>
+    </table>
+</div>
 
-                </tr>
-              </table>
-
-    </div>
-
-  <footer>
-  </footer>
+<footer>
+</footer>
 
 </body>
     

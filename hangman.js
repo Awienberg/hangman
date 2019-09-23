@@ -90,7 +90,7 @@ window.onload = function () {
     }
   }
 
-  // OnClick Function
+  // OnClick Function checks if the letter are in the word or not
   var check = function () {
     
     list.onclick = function () {
@@ -113,7 +113,7 @@ window.onload = function () {
     }
   }
 
-  // keypress Function
+  // keypress Function checks if the letter are in the word or n
   var checkkey = function (e) {
       document.getElementById(e.key).setAttribute('class', 'active');
       for (var i = 0; i < word.length; i++) {
@@ -130,9 +130,10 @@ window.onload = function () {
         comments();
       }
     }
-
     // Execute a function when the user press a key on the keyboard
     document.addEventListener("keydown", checkkey);
+
+  
 
   // Play the Game, chooses a random word in a random Category
   var play = function () {
@@ -150,7 +151,7 @@ window.onload = function () {
 
     geusses = [ ];
     lives = 10;
-    counter = 0;
+    counter = 10;
     space = 0;
     result();
     comments();
