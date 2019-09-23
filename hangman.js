@@ -5,15 +5,15 @@ window.onload = function () {
         'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
         't', 'u', 'v', 'w', 'x', 'y', 'z'];
   
-  var categories;         // Array of words
-  var chosenCategory;     // Selected catagory
-  var getHint;           // Word getHint
-  var word;              // Selected word
-  var guess;             // Geuss
-  var geusses = [ ];      // Stored geusses
-  var lives;             // Lives
-  var counter;           // Count correct geusses
-  var space;              // Number of spaces in word '-'
+  var categories;// Array of words
+  var chosenCategory;// Selected catagory
+  var getHint;// Word getHint
+  var word;// Selected word
+  var guess;// Geuss
+  var geusses = [ ];// Stored geusses
+  var lives;// Lives
+  var counter;// Count correct geusses
+  var space;// Number of spaces in word '-'
 
   // Get elements shown on website
   var showLives = document.getElementById('mylives');
@@ -29,7 +29,7 @@ window.onload = function () {
     for (var i = 0; i < alphabet.length; i++) {
       letters.id = 'alphabet';
       list = document.createElement('li');
-      list.id = 'letter';
+      list.id = alphabet[i];
       list.innerHTML = alphabet[i];
       check();
       myButtons.appendChild(letters);
@@ -57,11 +57,11 @@ window.onload = function () {
       correct.setAttribute('id', 'my-word');
       guess = document.createElement('li');
       guess.setAttribute('class', 'guess');
-      if (word[i] === "-") {
-        guess.innerHTML = "-";
+      if (word[i] === '-') {
+        guess.innerHTML = '-';
         space = 1;
       } else {
-        guess.innerHTML = "_"; //Creates the _ instead of letters
+        guess.innerHTML = '_'; //Creates the _ instead of letters
       }
 
       geusses.push(guess);
@@ -85,10 +85,13 @@ window.onload = function () {
     }
   }
 
+
+
   // OnClick Function
-   check = function () {
+  check = function () {
+    
     list.onclick = function () {
-      var geuss = (this.innerHTML);
+      var geuss = this.innerHTML;
       this.setAttribute('class', 'active');
       this.onclick = null;
       for (var i = 0; i < word.length; i++) {
@@ -106,6 +109,26 @@ window.onload = function () {
       }
     }
   }
+  // OnClick Function
+   checkkey = function (e) {
+      document.getElementById(e.key).setAttribute('class', 'active');
+      for (var i = 0; i < word.length; i++) {
+        if (word[i] === e.key) {
+          geusses[i].innerHTML = e.key;
+          counter += 1;
+        } 
+      }
+      var answer = (word.indexOf(e.key));
+      if (answer === -1) {
+        lives -= 1;
+        comments();
+      } else {
+        comments();
+      }
+    }
+
+    // Execute a function when the user press a key on the keyboard
+    document.addEventListener("keydown", checkkey);
 
   // Play the Game, chooses a random word in a random Category
   play = function () {

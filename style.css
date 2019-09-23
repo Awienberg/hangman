@@ -123,3 +123,13 @@ button{
       background-color: #87C232;
       transition: 0.4s;
     }
+
+.scoreStyle {
+        color: #fff;
+      text-align: center;
+      margin: 0;
+  }
+
+table, th, td {
+    border: 0.5px dotted #fff;
+  }
