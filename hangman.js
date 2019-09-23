@@ -16,10 +16,10 @@ window.onload = function () {
   var space;              // Number of spaces in word '-'
 
   // Get elements shown on website
-  var showLives = document.getElementById("mylives");
-  var showCategory = document.getElementById("category");
-  var getHint = document.getElementById("hint");
-  var showClue = document.getElementById("clue");
+  var showLives = document.getElementById('mylives');
+  var showCategory = document.getElementById('category');
+  var getHint = document.getElementById('hint');
+  var showClue = document.getElementById('clue');
 
   // create alphabet list 
   var buttons = function () {
@@ -40,11 +40,11 @@ window.onload = function () {
   // Select Catagory
   var selectCat = function () {
     if (chosenCategory === categories[0]) {
-      categoryName.innerHTML = "The Category Is Animals";
+      categoryName.innerHTML = 'The Category Is Animals';
     } else if (chosenCategory === categories[1]) {
-      categoryName.innerHTML = "The Category Is Movies";
+      categoryName.innerHTML = 'The Category Is Movies';
     } else if (chosenCategory === categories[2]) {
-      categoryName.innerHTML = "The Category Is Food";
+      categoryName.innerHTML = 'The Category Is Food';
     }
   }
 
@@ -72,14 +72,14 @@ window.onload = function () {
   
   // Show lives left
    comments = function () {
-    showLives.innerHTML = "You have " + lives + " lives left";
+    showLives.innerHTML = 'You have ' + lives + ' lives left';
     if (lives < 1) {
-      showLives.innerHTML = "Game Over";
+      showLives.innerHTML = 'Game Over';
       showLives.setAttribute('style', 'color: red');
     }
     for (var i = 0; i < geusses.length; i++) {
       if (counter + space === geusses.length) {
-        showLives.innerHTML = "You Win!";
+        showLives.innerHTML = 'You Win!';
         showLives.setAttribute('style', 'color: #87C232');
       }
     }
@@ -89,7 +89,7 @@ window.onload = function () {
    check = function () {
     list.onclick = function () {
       var geuss = (this.innerHTML);
-      this.setAttribute("class", "active");
+      this.setAttribute('class', 'active');
       this.onclick = null;
       for (var i = 0; i < word.length; i++) {
         if (word[i] === geuss) {
@@ -107,34 +107,12 @@ window.onload = function () {
     }
   }
 
-  // keypress Function
-   check = function () {
-    list.keypress = function () {
-      var geuss = (this.innerHTML);
-      this.setAttribute("class", "active");
-      this.keypress = null;
-      for (var i = 0; i < word.length; i++) {
-        if (word[i] === geuss) {
-          geusses[i].innerHTML = geuss;
-          counter += 1;
-        } 
-      }
-      var answer = (word.indexOf(geuss));
-      if (answer === -1) {
-        lives -= 1;
-        comments();
-      } else {
-        comments();
-      }
-    }
-  } 
-
   // Play the Game, chooses a random word in a random Category
   play = function () {
     categories = [
-        ["monkey", "elephant", "sloth", "zebra", "donkey", "axolotl", "tyranosaurus"], //Category 1
-        ["aliens", "jurassic-park", "harry-potter", "back-to-the-future", "turtles"], //Category 2
-        ["sushi", "pizza", "lasagna", "sandwich", "burger"] //Category 3
+        ['monkey', 'elephant', 'sloth', 'zebra', 'donkey', 'axolotl', 'tyranosaurus'], //Category 1
+        ['aliens', 'jurassic-park', 'harry-potter', 'back-to-the-future', 'turtles'], //Category 2
+        ['sushi', 'pizza', 'lasagna', 'sandwich', 'burger'] //Category 3
     ];
 
     chosenCategory = categories[Math.floor(Math.random() * categories.length)]; //Choose random word
@@ -158,9 +136,9 @@ window.onload = function () {
   hint.onclick = function() {
 
       hints = [
-        ["likes bananas", "trunk", "cute and lazy", "black with white stripes, or white with black stripes?", "jackass", "aquatic salamander", "jurassic park"],
-        ["predator", "clever girl", "wizards", "88 miles pr. hour", "cowabunga!"],
-        ["wrapped in seaweed", "tomato sauce and cheese", "garfield", "get back in the kitchen and make me a..", ".. and fries"]
+        ['likes bananas', 'trunk', 'cute and lazy', 'black with white stripes, or white with black stripes?', 'jackass', 'aquatic salamander', 'jurassic park'],
+        ['predator', 'clever girl', 'wizards', "88 miles pr. hour", 'cowabunga!'],
+        ['wrapped in seaweed', 'tomato sauce and cheese', 'garfield', 'get back in the kitchen and make me a..', '.. and fries']
     ];
 
     var categoryIndex = categories.indexOf(chosenCategory);
