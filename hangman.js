@@ -113,7 +113,7 @@ window.onload = function () {
     }
   }
 
-  // keypress Function checks if the letter are in the word or n
+  // keypress Function checks if the letter are in the word or not
   var checkkey = function (e) {
       document.getElementById(e.key).setAttribute('class', 'active');
       for (var i = 0; i < word.length; i++) {
@@ -133,8 +133,6 @@ window.onload = function () {
     // Execute a function when the user press a key on the keyboard
     document.addEventListener("keydown", checkkey);
 
-  
-
   // Play the Game, chooses a random word in a random Category
   var play = function () {
       categories = [
@@ -142,7 +140,12 @@ window.onload = function () {
         ['aliens', 'jurassic-park', 'harry-potter', 'back-to-the-future', 'turtles'], //Category 2
         ['sushi', 'pizza', 'lasagna', 'sandwich', 'burger'] //Category 3
     ];
-
+    var winsCount = document.getElementById('wins');
+    var wins = 0;
+    winsCount.innerHTML = wins;//Writes the the wins in the html
+    if (counter + space === geusses.length){
+      wins++;
+    } 
     chosenCategory = categories[Math.floor(Math.random() * categories.length)]; //Choose random word
     word = chosenCategory[Math.floor(Math.random() * chosenCategory.length)]; //Choose random Category
     word = word.replace(/\s/g, "-");
@@ -151,7 +154,7 @@ window.onload = function () {
 
     geusses = [ ];
     lives = 10;
-    counter = 10;
+    counter = 0;
     space = 0;
     result();
     comments();
@@ -178,7 +181,6 @@ window.onload = function () {
   document.getElementById('reset').onclick = function() {
     correct.parentNode.removeChild(correct);
     letters.parentNode.removeChild(letters);
-    showLives.setAttribute('style', 'color: #fff');
     showLives.setAttribute('style', 'color: #fff');
     showClue.innerHTML = "Clue: ";
     

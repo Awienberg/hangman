@@ -20,6 +20,10 @@ h2 {
   clear: both;
 }
 
+h3 {
+  font-size: 20px;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   height: 100%;
@@ -29,9 +33,14 @@ body {
   background-color: #202020;
 }
 
-.wrappper{
-  width:100%;
-  margin: 0 auto;
+#game {
+  padding: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.column {
+  float: left;
+  width: 50%;
 }
 
 p {
@@ -41,12 +50,8 @@ p {
 
 #alphabet {
   margin: 15px auto;
-  padding:0;
+  padding: 10px;
   max-width:900px;
-}
-
-li {
-
 }
 
 #alphabet li {
@@ -130,14 +135,19 @@ button{
     }
 
 .scoreBoard {
-      text-align: center;
-      font-size: 20px;
-      margin: 0;
       color: #fff;
       padding: 10px;
+      margin-left: 50px;
+      margin-right: 50px;
 }
 
 table, th, td {
     border: 0.5px dotted #fff;
-    width: 50%; 
+    width: 100%;
+}
+
+td , th {
+   padding: 10px;
+   text-align: left;
+   width: 50%;
 }

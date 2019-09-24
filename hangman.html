@@ -18,8 +18,9 @@
       <br>
       Click hint to get a clue. </h2>
   </div>
-
-  <div class="wrapper">
+ <div class='row'>
+<div class='column'>
+  <div id="game">
     <div id="buttons">
   </div> 
 
@@ -32,23 +33,27 @@
   
   <p id="clue">Clue: </p>
   <div class="container">
-  <button id="hint">Hint</button>
-  <button id="reset">Play again</button>
+      <button id="hint">Hint</button>
+      <button id="reset">Play again</button>
+    </div>
   </div>
 </div>
 
+<div class='column'>
 <div class="scoreBoard">
-  <h2>Score Board</h2>
+  <h3>Score Board</h3>
     <table>
       <tr>
-        <th id="p1">Name</th>
-        <th>Score</th> 
+        <th>Name</th>
+        <th>Wins</th> 
       </tr>
       <tr>
-        <td>Player 1</td>
-        <td id="score">500</td> 
+        <td id="p1">Player 1</td>
+        <td id="wins"></td> 
       </tr>
     </table>
+  </div>
+  </div>
 </div>
 
 <footer>
