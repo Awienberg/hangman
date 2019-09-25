@@ -1,5 +1,51 @@
 "use strict";
-window.onload = function () {
+//The Cookies
+// Create, read and erease cookies 
+function createCookie(name, value, days) {
+    let expires;
+    if (days) {
+        let date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = '; expires=' + date.toGMTString();
+    }
+    else {
+        expires = '';
+    }
+    document.cookie = name + "=" + value + expires + '; path=/';
+}
+
+function readCookie(name) {
+    let nameEQ = name + '=';
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == " ") {
+            c = c.substring(1, c.length);
+        }
+        if (c.indexOf(nameEQ) == 0) {
+            return c.substring(nameEQ.length, c.length);
+        }
+    }
+    return null;
+}
+
+function eraseCookie(name) {
+    createCookie(name, '', -1);
+}
+
+// The Game
+let startGameFunc  = function () {
+
+    // Input Name
+    if (document.getElementById('inputName').value.length < 2) {
+    confirm('Enter a name that is longer than 2 characters');
+    return; 
+  } else {
+    document.getElementById('startGame').style.display = "none";
+    document.getElementById('inputName').style.display = "none";
+    document.getElementById('playerScoreName').innerHTML = document.getElementById('inputName').value;
+
+    }
 
   var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
         'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
@@ -15,9 +61,9 @@ window.onload = function () {
   var counter;// Count correct geusses
   var space;// Number of spaces in word '-'
   var myButtons;//
-  var letters;//
+  var letters;// Letters in alphabet
   var list;//
-  var wordHolder;//
+  var wordHolder;// Contains the word
   var correct;//
 
   // Get elements shown on website
@@ -84,15 +130,25 @@ window.onload = function () {
     }
     for (var i = 0; i < geusses.length; i++) {
       if (counter + space === geusses.length) {
-        showLives.innerHTML = 'You Win!';
+        showLives.innerHTML = 'You Win!'; 
         showLives.setAttribute('style', 'color: #87C232');
       }
     }
   }
 
+  // wins
+  var winsCount = document.getElementById('wins');
+    var wins = 0;
+    winsCount.innerHTML = wins;// Prints the the wins in the html
+        for (var i = 0; i < geusses.length; i++) {
+      if (counter + space === geusses.length) {
+        winsCount.innerHTML = wins++; 
+      }
+    }
+ 
+
   // OnClick Function checks if the letter are in the word or not
   var check = function () {
-    
     list.onclick = function () {
       var geuss = this.innerHTML;
       this.setAttribute('class', 'active');
@@ -140,12 +196,7 @@ window.onload = function () {
         ['aliens', 'jurassic-park', 'harry-potter', 'back-to-the-future', 'turtles'], //Category 2
         ['sushi', 'pizza', 'lasagna', 'sandwich', 'burger'] //Category 3
     ];
-    var winsCount = document.getElementById('wins');
-    var wins = 0;
-    winsCount.innerHTML = wins;//Writes the the wins in the html
-    if (counter + space === geusses.length){
-      wins++;
-    } 
+
     chosenCategory = categories[Math.floor(Math.random() * categories.length)]; //Choose random word
     word = chosenCategory[Math.floor(Math.random() * chosenCategory.length)]; //Choose random Category
     word = word.replace(/\s/g, "-");
@@ -164,7 +215,8 @@ window.onload = function () {
   play();
   
   //Get a hint for the word, from the chosen Category
-  hint.onclick = function() {
+
+document.getElementById('startGame').addEventListener('click', startGameFunc);  hint.onclick = function() {
 
      var hints = [
         ['likes bananas', 'trunk', 'cute and lazy', 'black with white stripes, or white with black stripes?', 'jackass', 'aquatic salamander', 'jurassic park'],
@@ -187,3 +239,11 @@ window.onload = function () {
     play();
   }
 }
+
+// Start Game
+let init = function () {
+  document.getElementById('startGame').addEventListener('click', startGameFunc);
+  
+}
+
+window.addEventListener('load', init);
