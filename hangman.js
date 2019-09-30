@@ -37,13 +37,13 @@ function eraseCookie(name) {
 let startGameFunc  = function () {
 
     // Input Name
-    if (document.getElementById('inputName').value.length < 2) {
+    if (document.getElementById('inputNameStyle').value.length < 2) {
     confirm('Enter a name that is longer than 2 characters');
     return; 
   } else {
     document.getElementById('startGame').style.display = "none";
-    document.getElementById('inputName').style.display = "none";
-    document.getElementById('playerScoreName').innerHTML = document.getElementById('inputName').value;
+    document.getElementById('inputNameStyle').style.display = "none";
+    document.getElementById('playerScoreName').innerHTML = document.getElementById('inputNameStyle').value;
 
     }
 
@@ -123,6 +123,7 @@ let startGameFunc  = function () {
   
   // Show lives left
   var comments = function () {
+
     showLives.innerHTML = 'You have ' + lives + ' lives left';
     if (lives < 1) {
       showLives.innerHTML = 'Game Over';
@@ -134,18 +135,14 @@ let startGameFunc  = function () {
         showLives.setAttribute('style', 'color: #87C232');
       }
     }
-  }
-
-  // wins
-  var winsCount = document.getElementById('wins');
-    var wins = 0;
-    winsCount.innerHTML = wins;// Prints the the wins in the html
-        for (var i = 0; i < geusses.length; i++) {
-      if (counter + space === geusses.length) {
-        winsCount.innerHTML = wins++; 
-      }
+    // Wins
+    var winsCount = document.getElementById('wins');
+      var wins = 0;
+      if (counter + space === geusses.length) { 
+        wins++;
+        winsCount.innerHTML = wins;
     }
- 
+  }
 
   // OnClick Function checks if the letter are in the word or not
   var check = function () {
@@ -168,7 +165,7 @@ let startGameFunc  = function () {
       }
     }
   }
-
+  
   // keypress Function checks if the letter are in the word or not
   var checkkey = function (e) {
       document.getElementById(e.key).setAttribute('class', 'active');
